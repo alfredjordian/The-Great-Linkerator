@@ -1,26 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import BookMark from './BookMark';
+import CreateLinkCard from './CreateLinkCard';
 
-import {
-  getSomething
-} from '../api';
+
 
 const App = () => {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    getSomething()
-      .then(response => {
-        setMessage(response.message);
-      })
-      .catch(error => {
-        setMessage(error.message);
-      });
-  });
 
   return (
     <div className="App">
-      <h1>Hello, World!</h1>
-      <h2>{ message }</h2>
+      <h1 style={{display: 'flex', justifyContent:'center', marginTop:'5%'}}>THE GREAT LINKERATOR</h1>
+      <CreateLinkCard/>
+      <BookMark/>
     </div>
   );
 }
