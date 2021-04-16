@@ -9,6 +9,66 @@ export async function getLinks() {
   }
 }
 
+export async function createLink(date, url, comments, tags) {
+  try {
+    const { data : {links}} = await axios.post('/api/links', {
+      date,
+      url,
+      comments,
+      tags
+    });
+    return links;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateLink(date, url, count, comment, tag, linkId) {
+  try {
+    const { data : {links}} = await axios.patch(`/api/link/${linkId}`, {
+      date,
+      url,
+      count,
+      comment,
+      tag,
+    });
+    return links;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+export async function destroyLink(linkId) {
+ 
+  try {
+    const { data : {message} } = await axios.delete(`/api/link/${linkId}`);
+    return message;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+export async function getComments() {
+  try {
+    const { data : {comments}} = await axios.get('/api/comments');
+    return comments;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getTags() {
+  try {
+    const { data : {tags}} = await axios.get('/api/tags');
+    return tags;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
 
 // Step 1: Use this getLinks mock data to build frontend
 // Step 2: Then move mock data into Api Router in a Basic way
@@ -18,9 +78,6 @@ export async function getLinks() {
 // RUN CLIENT:DEV AND SERVER:DEV DURING THE API/DB PORTION TO TEST.
 
 
-export async function createLink() {
-
-}
 
 // Link the return info to the api, then replace return call with a fetch
 

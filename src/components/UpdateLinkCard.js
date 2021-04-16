@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
-import { createLink } from '../api';
+import { updateLink } from '../api';
 
 
 const useStyles = makeStyles({
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   });
 
 
-function CreateLinkCard() {
+function UpdateLinkCard({linkId}) {
 
     const classes = useStyles();
   const [createDate, setCreateDate] = useState('');
@@ -40,7 +40,8 @@ function CreateLinkCard() {
               onSubmit={e => {
               e.preventDefault();
                 
-              createLink(createDate, createUrl, createComment, createTag)
+              updateLink(createDate, createUrl, createComment, createTag, linkId)
+    
            
             }}
             >
@@ -83,9 +84,9 @@ function CreateLinkCard() {
                 fullWidth
                 variant="contained"
                 className={classes.submit}
-                style={{ backgroundColor: "green", marginBottom: "8%", color:'white' }}
+                style={{ backgroundColor: "blue", marginBottom: "8%", color:'white' }}
               >
-                Create Link
+                Update Link
               </Button>
             </form>
           </div>
@@ -96,4 +97,4 @@ function CreateLinkCard() {
     )
 }
 
-export default CreateLinkCard
+export default UpdateLinkCard
